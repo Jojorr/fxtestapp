@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sample.PopupController"
+            prefHeight="400.0" prefWidth="600.0">
+    <Label text="ID" labelFor="ID"/>
+    <TextField fx:id="ID"/>
+    <Label text="Description" labelFor="description"/>
+    <TextField fx:id="description"/>
+    <Label text="Date" labelFor="date"/>
+    <TextField fx:id="date"/>
+    <Label text="Logo" labelFor="logo"/>
+    <TextField fx:id="logo"/>
+    <Label text="IsTrue" labelFor="isTrue"/>
+    <TextField fx:id="isTrue"/>
+</AnchorPane>
