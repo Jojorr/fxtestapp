@@ -20,5 +20,4 @@ public class PopupController {
     @FXML
     private TextField isTrue;
 
-    
 }

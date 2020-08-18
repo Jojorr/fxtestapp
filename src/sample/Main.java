@@ -14,6 +14,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
         primaryStage.setTitle("VBox test");
         primaryStage.setScene(new Scene(root, 400, 300));
+        primaryStage.setMinWidth(640);
+        primaryStage.setMinHeight(480);
         primaryStage.show();
     }
 
