@@ -8,13 +8,6 @@
 <TilePane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="sample.MainController" prefWidth="640" prefHeight="480">
 <Button text="Add" fx:id="addButton" onAction="#openPopup"/>
-<TableView fx:id="entriesTable" >
-    <columns>
-        <TableColumn text="ID"/>
-        <TableColumn text="Description"/>
-        <TableColumn text="Date"/>
-        <TableColumn text="Logo"/>
-        <TableColumn text="IsTrue"/>
-    </columns>
-</TableView>
+    <TableView fx:id="entriesTable" items="${entitiesObservableList}"/>
+
 </TilePane>

@@ -3,18 +3,35 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+
+<?import java.lang.Boolean?>
+<?import javafx.collections.FXCollections?>
+
 <VBox xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.PopupController"
-            prefHeight="400.0" prefWidth="600.0">
-    <Label text="ID" labelFor="$ID" />
-    <TextField fx:id="ID"/>
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sample.PopupController"
+      prefHeight="400.0" prefWidth="600.0">
+    <Label text="ID" labelFor="$id"/>
+    <TextField fx:id="id"/>
     <Label text="Description" labelFor="$description"/>
     <TextField fx:id="description"/>
     <Label text="Date" labelFor="$date"/>
-    <TextField fx:id="date"/>
+    <DatePicker fx:id="date"/>
     <Label text="Logo" labelFor="$logo"/>
     <TextField fx:id="logo"/>
     <Label text="IsTrue" labelFor="$isTrue"/>
-    <TextField fx:id="isTrue"/>
+    <ComboBox fx:id="isTrue">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <Boolean fx:value="true"/>
+                <Boolean fx:value="false"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+
+    <Button text="Confirm" fx:id="confirmButton" onAction="#confirm"/>
+    <Button text="Cancel" fx:id="cancelButton" onAction="#cancel"/>
+
+    <Label fx:id="completion"/>
 </VBox>
