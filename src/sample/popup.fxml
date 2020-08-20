@@ -1,37 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-
 <?import java.lang.Boolean?>
 <?import javafx.collections.FXCollections?>
 
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Button?>
+
+<?import javafx.scene.Group?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="sample.PopupController"
       prefHeight="400.0" prefWidth="600.0">
     <Label text="ID" labelFor="$id"/>
-    <TextField fx:id="id"/>
     <Label text="Description" labelFor="$description"/>
-    <TextField fx:id="description"/>
     <Label text="Date" labelFor="$date"/>
-    <DatePicker fx:id="date"/>
     <Label text="Logo" labelFor="$logo"/>
-    <TextField fx:id="logo"/>
     <Label text="IsTrue" labelFor="$isTrue"/>
-    <ComboBox fx:id="isTrue">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <Boolean fx:value="true"/>
-                <Boolean fx:value="false"/>
-            </FXCollections>
-        </items>
-    </ComboBox>
 
-
+    <VBox fx:id="controls">
+        <TextField fx:id="id"/>
+        <TextField fx:id="description"/>
+        <DatePicker fx:id="date" editable="false"/>
+        <TextField fx:id="logo"/>
+        <ComboBox fx:id="isTrue">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <Boolean fx:value="true"/>
+                    <Boolean fx:value="false"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </VBox>
     <Button text="Confirm" fx:id="confirmButton" onAction="#confirm"/>
-    <Button text="Cancel" fx:id="cancelButton" onAction="#cancel"/>
-
-    <Label fx:id="completion"/>
+    <Label fx:id="completionLabel"/>
 </VBox>
