@@ -39,6 +39,8 @@ public class PopupController {
 
     @FXML
     private void initialize() {
+
+        //TODO potentially totally incorrect validation, look deeper into bindings
         validations = new boolean[5];
         id.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
