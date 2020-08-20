@@ -5,9 +5,46 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.collections.FXCollections?>
+<?import sample.Entity?>
+<?import java.util.Date?>
 <TilePane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="sample.MainController" prefWidth="640" prefHeight="480">
-<Button text="Add" fx:id="addButton" onAction="#openPopup"/>
-    <TableView fx:id="entriesTable" items="${entitiesObservableList}"/>
+    <Button text="Add" fx:id="addButton" onAction="#openPopup"/>
+    <TableView fx:id="entriesTable" >
+        <columns>
+            <TableColumn text="ID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="id"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Description">
+                <cellValueFactory>
+                    <PropertyValueFactory property="description"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Date">
+                <cellValueFactory>
+                    <PropertyValueFactory property="date"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Logo">
+                <cellValueFactory>
+                    <PropertyValueFactory property="image"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="state">
+                <cellValueFactory>
+                    <PropertyValueFactory property="state"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <Entity id="1" description="test" date="1231231" image="test image" state="true"/>
+            </FXCollections>
+        </items>
+    </TableView>
 
 </TilePane>

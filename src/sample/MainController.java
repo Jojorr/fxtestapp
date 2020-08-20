@@ -19,33 +19,13 @@ import java.util.Date;
 public class MainController {
 
     @FXML
-    private ObservableList<Entity> entitiesObservableList = FXCollections.observableArrayList(
-            new Entity(1, "test",
-                    new Date(), null, true));
+    private ObservableList<Entity> entitiesObservableList;
 
     @FXML
     private TableView<Entity> entriesTable;
 
 
     public void initialize() {
-
-        TableColumn<Entity, Integer> idCol = new TableColumn<>("ID");
-        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-
-        TableColumn<Entity, String> descriptionCall = new TableColumn<>("Description");
-        descriptionCall.setCellValueFactory(new PropertyValueFactory<>("description"));
-
-        TableColumn<Entity, Long> dateCol = new TableColumn<>("Date");
-        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-
-        TableColumn<Entity, Object> logoCol = new TableColumn<>("Logo");
-        logoCol.setCellValueFactory(new PropertyValueFactory<>("logo"));
-
-        TableColumn<Entity, Boolean> stateCol = new TableColumn<>("isTrue");
-        stateCol.setCellValueFactory(new PropertyValueFactory<>("state"));
-
-        entriesTable.getColumns().addAll(idCol, descriptionCall, dateCol, logoCol, stateCol);
-        entriesTable.setItems(entitiesObservableList);
     }
 
 

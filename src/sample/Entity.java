@@ -2,9 +2,6 @@ package sample;
 
 import javafx.beans.property.*;
 
-import java.io.File;
-import java.util.Date;
-
 public class Entity {
 
     private IntegerProperty id;
@@ -13,19 +10,21 @@ public class Entity {
 
     private LongProperty date;
 
-    private ObjectProperty<File> image;
+    //TODO just a stub, implement actual data later
+    private StringProperty image;
 
     private BooleanProperty state;
 
     public Entity() {
+        this(0, null, (long) 0, "", true);
     }
 
-    public Entity(int id, String description, Date date, File image,
+    public Entity(int id, String description, Long date, String image,
                   boolean state) {
         this.id = new SimpleIntegerProperty(id);
         this.description = new SimpleStringProperty(description);
-        this.date = new SimpleLongProperty(date.getTime());
-        this.image = new SimpleObjectProperty<>(image);
+        this.date = new SimpleLongProperty(date);
+        this.image = new SimpleStringProperty(image);
         this.state = new SimpleBooleanProperty(state);
     }
 
@@ -45,19 +44,19 @@ public class Entity {
         this.description.setValue(description);
     }
 
-    public Date getDate() {
-        return new Date(date.get());
+    public long getDate() {
+        return date.get();
     }
 
-    public void setDate(Date date) {
-        this.date.setValue(date.getTime());
+    public void setDate(long date) {
+        this.date.setValue(date);
     }
 
-    public File getImage() {
+    public String getImage() {
         return image.get();
     }
 
-    public void setImage(File image) {
+    public void setImage(String  image) {
         this.image.setValue(image);
     }
 
