@@ -10,10 +10,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 
@@ -21,16 +22,18 @@ import java.time.LocalDate;
 public class MainController {
 
     @FXML
+    private static ObservableList<TableRow> entitiesObservableList;
+    @FXML
     private Button addButton;
 
     @FXML
-    private ObservableList<TableRow> entitiesObservableList;
+    private GridPane gridPane;
 
     @FXML
     private TableView<TableRow> entriesTable;
 
-
     public void initialize() {
+        
         entitiesObservableList = FXCollections.observableArrayList(
                 new TableRow(1, "test",
                         LocalDate.now(), null, true));
@@ -44,7 +47,7 @@ public class MainController {
         TableColumn<TableRow, LocalDate> dateCol = new TableColumn<>("Date");
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        TableColumn<TableRow, File> logoCol = new TableColumn<>("Logo");
+        TableColumn<TableRow, Image> logoCol = new TableColumn<>("Logo");
         logoCol.setCellValueFactory(new PropertyValueFactory<>("logo"));
 
         TableColumn<TableRow, Boolean> stateCol = new TableColumn<>("isTrue");
@@ -65,8 +68,8 @@ public class MainController {
         try {
             Parent root = fxmlLoader.load();
             Stage stage = new Stage();
-            entriesTable.refresh();
-            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+            stage.initModality(Modality.WINDOW_MODAL);
             stage.setTitle("Test");
             stage.setScene(new Scene(root));
             stage.show();
@@ -74,5 +77,4 @@ public class MainController {
             e.printStackTrace();
         }
     }
-
 }
