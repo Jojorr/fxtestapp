@@ -21,8 +21,8 @@ import java.time.LocalDate;
 
 public class MainController {
 
-    @FXML
-    private static ObservableList<TableRow> entitiesObservableList;
+    private ObservableList<TableRow> entitiesObservableList;
+
     @FXML
     private Button addButton;
 
@@ -33,7 +33,7 @@ public class MainController {
     private TableView<TableRow> entriesTable;
 
     public void initialize() {
-        
+
         entitiesObservableList = FXCollections.observableArrayList(
                 new TableRow(1, "test",
                         LocalDate.now(), null, true));
@@ -60,13 +60,18 @@ public class MainController {
 
     public void addItem(TableRow tableRow) {
         entitiesObservableList.add(tableRow);
+        entriesTable.setItems(entitiesObservableList);
     }
 
     @FXML
     private void openPopup() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("popup.fxml"));
         try {
+            PopupController popupController = new PopupController(this);
+            fxmlLoader.setController(popupController);
             Parent root = fxmlLoader.load();
+
+
             Stage stage = new Stage();
             stage.setResizable(false);
             stage.initModality(Modality.WINDOW_MODAL);

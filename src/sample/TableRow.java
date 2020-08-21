@@ -3,7 +3,6 @@ package sample;
 
 import java.io.File;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class TableRow {
 

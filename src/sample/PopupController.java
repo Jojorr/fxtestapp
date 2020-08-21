@@ -23,6 +23,8 @@ import java.io.IOException;
 
 public class PopupController {
 
+    private MainController mainController;
+
     @FXML
     private ImageView logoView;
 
@@ -57,11 +59,17 @@ public class PopupController {
     //TODO rename, maybe float type, look into it
     private int percent;
 
+    public PopupController(MainController controller){
+        mainController = controller;
+    }
+    public PopupController(){
+    }
+
     @FXML
     private void initialize() {
         logoView.setPreserveRatio(true);
         logoView.setSmooth(true);
-        confirmButton.setDisable(true);
+        confirmButton.setDisable(false);
         fileDialogButton.setOnAction(event -> {
             FileChooser.ExtensionFilter imageFilter =
                     new FileChooser.ExtensionFilter("Image", "*.img", "*.png");
@@ -108,15 +116,15 @@ public class PopupController {
         });
     }
 
-    public void confirm() {
-        MainController controller = new MainController();
+    public void confirm() throws IOException {
         TableRow tableRow = new TableRow();
         tableRow.setId(Integer.parseInt(idTextField.getText()));
         tableRow.setDescription(descriptionTextField.getText());
         tableRow.setDate(datePicker.getValue());
         tableRow.setImage(imageToFile(logoView.getImage()));
         tableRow.setState(isTrueComboBox.getValue());
-        controller.addItem(tableRow);
+
+        mainController.addItem(tableRow);
     }
 
     private File imageToFile(Image image) {
